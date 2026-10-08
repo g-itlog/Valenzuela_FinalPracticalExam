@@ -77,8 +77,7 @@ function App() {
   return (
     <div>
       <h1>Student Management System</h1>
-      <h2>Students</h2>
-      
+  
       <input
         type="text"
         placeholder="Name"
@@ -104,6 +103,7 @@ function App() {
         {editingId ? "Update Student" : "Add Student"}
       </button>
 
+      <h2>Students</h2>
 
       {students.map((student) => (
         <div key={student._id}>
