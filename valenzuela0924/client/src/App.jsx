@@ -11,7 +11,7 @@ function App() {
   const [editingId, setEditingId] = useState(null);
 
   const addStudent = () => {
-    axios.post("http://localhost:5000/students", {
+    axios.post("https://valenzuela-final-practical-exam-gj9xl4p84-g-itlogs-projects.vercel.app/students", {
       name: name,
       course: course,
       age: age,
@@ -21,7 +21,7 @@ function App() {
         setCourse("");
         setAge("");
 
-        axios.get("http://localhost:5000/students")
+        axios.get("https://valenzuela-final-practical-exam-gj9xl4p84-g-itlogs-projects.vercel.app/students")
           .then((response) => {
             setStudents(response.data);
           });
@@ -30,7 +30,7 @@ function App() {
 
   const updateStudent = () => {
     axios
-      .put(`http://localhost:5000/students/${editingId}`, {
+      .put(`https://valenzuela-final-practical-exam-gj9xl4p84-g-itlogs-projects.vercel.app/students/${editingId}`, {
         name: name,
         course: course,
         age: age,
@@ -41,15 +41,15 @@ function App() {
         setAge("");
         setEditingId(null);
 
-        axios.get("http://localhost:5000/students").then((response) => {
+        axios.get("https://valenzuela-final-practical-exam-gj9xl4p84-g-itlogs-projects.vercel.app/students").then((response) => {
           setStudents(response.data);
         });
       });
   };
 
   const deleteStudent = (id) => {
-    axios.delete(`http://localhost:5000/students/${id}`).then(() => {
-      axios.get("http://localhost:5000/students").then((response) => {
+    axios.delete(`https://valenzuela-final-practical-exam-gj9xl4p84-g-itlogs-projects.vercel.app/students/${id}`).then(() => {
+      axios.get("https://valenzuela-final-practical-exam-gj9xl4p84-g-itlogs-projects.vercel.app/students").then((response) => {
         setStudents(response.data);
       });
     });
@@ -66,7 +66,7 @@ function App() {
   useEffect(() => {
 
     axios
-      .get("http://localhost:5000/students")
+      .get("https://valenzuela-final-practical-exam-gj9xl4p84-g-itlogs-projects.vercel.app/students")
       .then((response) => {
         setStudents(response.data);
       });
