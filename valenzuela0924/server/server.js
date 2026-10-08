@@ -43,6 +43,38 @@ app.get("/students", async (req, res) => {
  
     res.json(students);
 });
+
+app.post("/students", async (req, res) => {
+    const student = new Student({
+        name: req.body.name,
+        course: req.body.course,
+        age: req.body.age
+    });
+
+    await student.save();
+
+    res.json(student);
+});
+
+app.delete("/students/:id", async (req, res) => {
+    await Student.findByIdAndDelete(req.params.id);
+
+    res.json({ message: "Student deleted" });
+});
+
+app.put("/students/:id", async (req, res) => {
+    const student = await Student.findByIdAndUpdate(
+        req.params.id,
+        {
+            name: req.body.name,
+            course: req.body.course,
+            age: req.body.age
+        },
+        { new: true }
+    );
+
+    res.json(student);
+});
  
 app.listen(5000, () => {
     console.log("Server running on port 5000");
