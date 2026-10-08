@@ -28,7 +28,7 @@ function App() {
     });
   };
 
-  const updateStudent = () => {
+   const updateStudent = () => {
     axios
       .put(`http://localhost:5000/students/${editingId}`, {
         name: name,
@@ -47,23 +47,12 @@ function App() {
       });
   };
 
-   const updateStudent = () => {
-    axios
-      .put(`http://localhost:5000/students/${editingId}`, {
-        name: name,
-        course: course,
-        age: age,
-      })
-      .then(() => {
-        setName("");
-        setCourse("");
-        setAge("");
-        setEditingId(null);
-
-        axios.get("http://localhost:5000/students").then((response) => {
-          setStudents(response.data);
-        });
+  const deleteStudent = (id) => {
+    axios.delete(`http://localhost:5000/students/${id}`).then(() => {
+      axios.get("http://localhost:5000/students").then((response) => {
+        setStudents(response.data);
       });
+    });
   };
 
 
