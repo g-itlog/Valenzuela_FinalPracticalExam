@@ -5,6 +5,29 @@ function App() {
  
   const [students, setStudents] = useState([]);
  
+  const [name, setName] = useState("");
+  const [course, setCourse] = useState("");
+  const [age, setAge] = useState("");
+  const [editingId, setEditingId] = useState(null);
+
+  const addStudent = () => {
+    axios.post("http://localhost:5000/students", {
+      name:name,
+      course:course,
+      age:age,
+    })
+    .then(() =>{
+      setName("");
+      setCourse("");
+      setAge("");
+
+      axios.get("http://localhost:5000/students")
+      .then((response) =>{
+        setStudents(response.data);
+      });
+    });
+  };
+
   useEffect(() => {
  
     axios
